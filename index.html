@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NECRO: OUTBREAK</title>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: red;
+    font-family: 'Creepster', cursive;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.menu {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+}
+
+.menu button {
+    background: transparent;
+    border: none;
+    color: red;
+    font-size: 40px;
+    text-align: left;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-family: 'Creepster', cursive;
+    transition: 0.3s;
+}
+
+.menu button:hover {
+    transform: translateX(15px);
+    text-shadow: 0 0 20px red;
+}
+
+.title-area {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-title {
+    font-size: 90px;
+    text-align: right;
+    letter-spacing: 5px;
+    font-family: 'Creepster', cursive;
+    position: relative;
+}
+
+.center-image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0); 
+    width: 200px;
+    z-index: 5;
+    animation: spinScale 1.8s forwards;
+}
+
+@keyframes spinScale {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) scale(1.1) rotate(1080deg); }
+}
+
+.rickroll {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 999;
+    background: black;
+}
+
+.rickroll video {
+    width: 100%;
+    height: 100%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="menu">
+        <button onclick="startRickroll()">START</button>
+        <button onclick="startRickroll()">LOAD</button>
+        <button onclick="startRickroll()">SETTINGS</button>
+        <button onclick="startRickroll()">EXIT</button>
+    </div>
+
+    <div class="title-area">
+        <div class="game-title">
+            NECRO<br>OUTBREAK
+        </div>
+    </div>
+
+</div>
+
+<img src="image.jpg" id="centerImage" class="center-image">
+
+<script>
+function startRickroll() {
+    const centerImage = document.getElementById('centerImage');
+    centerImage.style.display = 'none';
+
+    const div = document.getElementById('rickroll');
+    const video = document.getElementById('rickrollVideo');
+
+    div.style.display = 'block';
+    video.play();
+
+    if (div.requestFullscreen) div.requestFullscreen();
+}
+</script>
+
+<div class="rickroll" id="rickroll">
+    <video id="rickrollVideo" src="rickroll.mp4" loop></video>
+</div>
+
+</body>
+</html>
